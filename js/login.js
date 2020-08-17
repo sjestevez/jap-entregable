@@ -4,3 +4,7 @@
 document.addEventListener("DOMContentLoaded", function(e){
 
 });
+
+function redireccion(){
+    window.location.href = "index-main.html";
+}
