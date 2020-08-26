@@ -81,6 +81,12 @@ footer p {
   transform: translate(-50%, 0);
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;

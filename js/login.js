@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 });
 
-function redireccion(){
-    window.location.href = "index-main.html";
+
+function logeo(){
+    var usuario = document.getElementById("inputUser").value;
+    var contra = document.getElementById("inputPassword").value;
+    if ((usuario === "") || (contra === "")){
+        alert("Debe ingresar usuario y contraseña");
+    } else {
+        window.location.href = "index-main.html";
+    }
 }
