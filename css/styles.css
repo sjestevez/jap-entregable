@@ -59,6 +59,11 @@ footer p {
   transition: ease-in-out color .15s;
 }
 
+#usuario{
+    color: white;
+    transition: ease-in-out color .15s;
+}
+
 .light-text {
   color: white;
 }
