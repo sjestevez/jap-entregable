@@ -19,6 +19,9 @@
   font-weight: bold;
 }
 
+.checked {
+  color: orange
+}
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: 6rem;
