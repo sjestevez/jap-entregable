@@ -65,6 +65,24 @@
           <div class="row text-center text-lg-left pt-2" id="productComments">
           </div>
         </dd>
+        <dt>Añadir comentario: </dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="productAddComment">
+            <form class="form-signin">
+              <input type="text" id="comentarioUsuario" placeholder="Nombre usuario" required /><br>
+              <textarea name="comentario" id="comentario" rows="5" cols="30" placeholder="Escribi aca tu comentario..."></textarea><br>
+              <label for="comentarioPuntuacion">Elegir puntuación: </label>
+              <select id="comentarioPuntuacion" name="comentarioPuntuacion">
+                <option value="uno">1</option>
+                <option value="dos">2</option>
+                <option value="tres">3</option>
+                <option value="cuatro">4</option>
+                <option value="cinco">5</option>
+              </select><br>
+              <button class="btn btn-lg btn-primary btn-block" type="button" onclick="enviarComentario()">Enviar</button>
+            </form>
+          </div>
+        </dd>
       </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
