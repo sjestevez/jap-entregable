@@ -118,25 +118,17 @@ function enviarComentario(){
 
 function agarrarFecha(){
     var fecha = new Date();
-    function mesConCero(mes){
-        if (mes < 10){
-            let mes_aux = "0" + mes;
-            mes = mes_aux;
+    function agregarCero(num){
+        if (num < 10){
+                    let num_aux = "0" + num;
+                    num = num_aux;
         }
-        return mes;
-    }
-
-    function diaConCero(dia){
-        if (dia < 10){
-            let dia_aux = "0" + dia;
-            dia = dia_aux;
-        }
-        return dia;
+        return num;				
     }
     
-    let fechaActual = fecha.getFullYear() + `-` + mesConCero(fecha.getMonth()+1) + `-` + 
-    diaConCero(fecha.getDate()) + ` ` + fecha.getHours() + `:` + fecha.getMinutes() + `:` +
-    fecha.getSeconds();
+    let fechaActual = fecha.getFullYear() + `-` + agregarCero(fecha.getMonth()+1) + `-` + 
+    agregarCero(fecha.getDate()) + ` ` + agregarCero(fecha.getHours()) + `:` + agregarCero(fecha.getMinutes()) + `:` +
+    agregarCero(fecha.getSeconds());
     return fechaActual;
 }
 //Función que se ejecuta una vez que se haya lanzado el evento de
