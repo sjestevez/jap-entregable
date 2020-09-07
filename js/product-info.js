@@ -1,5 +1,5 @@
 var product = {};
-var comentarios = {};
+var comentarios = [];
 
 function showImagesGallery(array){
 
@@ -49,7 +49,7 @@ function showProductComments(){
 }
 
 function showProductScore(score){
-    var comentarioEstrelas = "";
+    var comentarioEstrellas = "";
 
     switch (score){
         case 1:
@@ -105,6 +105,40 @@ function showProductScore(score){
     }
 }
 
+function enviarComentario(){
+    let comentarioAEnviar = {
+        user:document.getElementById("comentarioUsuario").value,
+        description:document.getElementById("comentario").value,
+        score:parseInt(document.getElementById("comentarioPuntuacion").value),
+        dateTime:agarrarFecha()
+    };
+    comentarios.push(comentarioAEnviar);
+    showProductComments();
+}
+
+function agarrarFecha(){
+    var fecha = new Date();
+    function mesConCero(mes){
+        if (mes < 10){
+            let mes_aux = "0" + mes;
+            mes = mes_aux;
+        }
+        return mes;
+    }
+
+    function diaConCero(dia){
+        if (dia < 10){
+            let dia_aux = "0" + dia;
+            dia = dia_aux;
+        }
+        return dia;
+    }
+    
+    let fechaActual = fecha.getFullYear() + `-` + mesConCero(fecha.getMonth()+1) + `-` + 
+    diaConCero(fecha.getDate()) + ` ` + fecha.getHours() + `:` + fecha.getMinutes() + `:` +
+    fecha.getSeconds();
+    return fechaActual;
+}
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
