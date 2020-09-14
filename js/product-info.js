@@ -105,6 +105,12 @@ function showProductScore(score){
     }
 }
 
+function showRelatedProducts(){
+    let htmlContentToAppend = "";
+
+    
+}
+
 function enviarComentario(){
     let comentarioAEnviar = {
         user:document.getElementById("comentarioUsuario").value,
@@ -131,6 +137,7 @@ function agarrarFecha(){
     agregarCero(fecha.getSeconds());
     return fechaActual;
 }
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -161,6 +168,15 @@ document.addEventListener("DOMContentLoaded", function(e){
             comentarios = resultObj2.data;
 
             showProductComments();
+        }
+    });
+
+    getJSONData(PRODUCTS_URL).then(function(resultObj3){
+        if (resultObj3.status === "ok")
+        {
+            comentarios = resultObj3.data;
+
+            showRelatedProducts();
         }
     });
 });
