@@ -133,6 +133,10 @@ footer p {
   }
 }
 
+.texto-carousel{
+  background-color:rgb(33, 28, 28);
+}
+
 #spinner-wrapper{
   position: fixed;
   background-color: rgba(0,0,0,0.5);

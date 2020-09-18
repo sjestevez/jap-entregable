@@ -25,13 +25,12 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="btn-group">
         <button id="usuario" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        
         </button>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="cart.html">Mi carrito</a>
           <a class="dropdown-item" href="#">Mi perfil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Cerrar sesión</a>
+          <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
         </div>
       </div>
     </div>
@@ -47,31 +46,34 @@
       <h3 id="productName"></h3>
       <hr class="my-3">
       <dl>
-        <dt>Descripción</dt>
-        <dd>
-          <p id="productDescription"></p>
-        </dd>
-
-        <dt>Cantidad de vendidos</dt>
-        <dd>
-          <p id="productCount"></p>
-        </dd>
-
-        <dt>Precio del auto</dt>
-        <dd>
-          <p id="productPrice"></p>
-        </dd>
-
-        <dt>Imágenes ilustrativas</dt>
-        <dd>
-          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+        <div class="container">
+          <div class="row">
+            <div class="col-6" id="productImagesGallery"></div>
+            <div class="col-6">
+              <dl>
+                <dt>Descrpción del producto: </dt>
+                <dd>
+                  <p id="productDescription"></p>
+                </dd>
+                <dt>Cantidad de vendidos</dt>
+                <dd>
+                  <p id="productCount"></p>
+                </dd>
+                <dt>Precio del auto</dt>
+                <dd>
+                  <p id="productPrice"></p>
+                </dd>
+              </dl>
+            </div>
           </div>
-        </dd>
+        </div>
+        <hr class="my-3">        
         <dt>Comentarios del producto: </dt>
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productComments">
           </div>
         </dd>
+        <hr class="my-3">
         <dt>Añadir comentario: </dt>
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productAddComment">
@@ -90,9 +92,16 @@
             </form>
           </div>
         </dd>
+        <hr class="my-3">
         <dt>Productos relacionados</dt>
         <dd>
-          <div class="row text-center text-lg-left pt-2" id="relatedProducts"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-3"></div>
+              <div class="col-6" id="relatedProducts"></div>
+              <div class="col-3"></div>
+            </div>
+          </div>
         </dd>
       </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
