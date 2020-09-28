@@ -49,6 +49,23 @@ function mostrarItems(){
     calcularTotales();
 }
 
+function mostrarOtro(mostrar){
+    if (mostrar){
+        document.getElementById("otro").innerHTML=`
+        <br>
+        <label for="otroCampo">Dirección: </label>
+        <input type="text" id="otroCampo" name="otroCampo"><br>
+        <label for="otroNum">Número puerta: </label>
+        <input type="text" id="otroNum" name="otroNum"><br>
+        <label for="otroEsq">Esquina: </label>
+        <input type="text" id="otroEsq" name="otroEsq"><br>
+        <label for="otroTel">Teléfono: </label>
+        <input type="tel" id="otroTel" name="otroTel"><br>
+        <button type="button">Confirmar</input>`;
+    } else {
+        document.getElementById("otro").innerHTML="";
+    }
+}
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CART_INFO_URL).then(function(resultObj){
         itemsCarrito = resultObj.data;

@@ -60,9 +60,28 @@
 
       </div>
       <hr class="my-3">
-      <h4>Cantidad artículos: <span id="cantidadArticulos"></span></h4>
-      <h4>Total: UYU <span id="totalCompra"></span></h4>
-      <button type="button">Comprar</button>
+      <h4><strong>Cantidad artículos:</strong> <span id="cantidadArticulos"></span></h4>
+      <h4><strong>Total:</strong> UYU <span id="totalCompra"></span></h4>
+      <form>
+        <h5><strong>Elegir tipo envío:</strong></h5>
+        <input type="radio" id="retiro" name="envio" onclick="mostrarOtro(0)" value="retiro" autofocus>
+        <label for="retiro">Retiro en sucursal</label>
+        <input type="radio" id="envioD" name="envio" onclick="mostrarOtro(0)" value="envioD">
+        <label for="envioD">Envío a domicilio</label>
+        <input type="radio" id="envioO" name="envio" onclick="mostrarOtro(1)" value="envioO">
+        <label for="envioO">Envío a otra dirección</label>
+        <span id="otro"></span>
+        <br>
+        <h5><strong>Elegir tipo pago:</strong></h5>
+        <input type="radio" id="redpagos" name="pago" value="redpagos">
+        <label for="redpagos">Redpagos</label>
+        <input type="radio" id="mercadopago" name="pago" value="mercadopago">
+        <label for="mercadopago">MercadoPago</label>
+        <input type="radio" id="paypal" name="pago" value="paypal">
+        <label for="paypal">PayPal</label>
+        <br>
+        <input type="submit" value="Realizar compra">
+      </form>
     </div>
   </main>
   <footer class="text-muted">
