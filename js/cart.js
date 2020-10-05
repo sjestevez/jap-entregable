@@ -66,6 +66,8 @@ function calcularTotalFinal(num){
         case 2:
             document.getElementById("totalCompra").innerHTML = Math.ceil(subtotalFinal * 1.05);
         break;
+        default:
+
     }
 }
 function mostrarDireccionCampo(mostrar){
@@ -74,16 +76,16 @@ function mostrarDireccionCampo(mostrar){
         <form>
             <div class="form-group">
                 <label for="inputAddress">Dirección</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Dirección...">
+                <input type="text" class="form-control" id="inputAddress" placeholder="Dirección..." required>
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Info adicional dirección</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartmento, piso...">
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartmento, piso..." required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Ciudad</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <input type="text" class="form-control" id="inputCity" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputState">Departamento</label>
@@ -114,7 +116,7 @@ function mostrarDireccionCampo(mostrar){
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputZip">Código postal</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <input type="text" class="form-control" id="inputZip"  required>
                 </div>
             </div>
             <fieldset class="form-group">
@@ -122,7 +124,7 @@ function mostrarDireccionCampo(mostrar){
                 <legend class="col-form-label col-sm-3 pt-0">Tipo envío</legend>
                 <div class="col-sm-9">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(0)" name="tipoEnvio" id="tipoEnvio1" value="option1" checked>
+                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(0)" name="tipoEnvio" id="tipoEnvio1" value="option1">
                         <label class="form-check-label" for="tipoEnvio1">
                             Premium (2 a 5 días) - 15% sobre el subtotal
                         </label>
@@ -146,6 +148,7 @@ function mostrarDireccionCampo(mostrar){
     </form>`;
     } else {
         document.getElementById("direccion").innerHTML="";
+        document.getElementById("totalCompra").innerHTML = Math.ceil(subtotalFinal);
     }
 }
 document.addEventListener("DOMContentLoaded", function(e){
