@@ -34,6 +34,97 @@
 </head>
 
 <body>
+  <div class="modal fade" id="modalDireccion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Dirección de envío</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="inputAddress">Dirección</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Dirección..." required>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Info adicional dirección</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartmento, piso..." required>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">Ciudad</label>
+                <input type="text" class="form-control" id="inputCity" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputState">Departamento</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Elegir...</option>
+                    <option>Artigas</option>
+                    <option>Canelones</option>
+                    <option>Cerro Largo</option>
+                    <option>Colonia</option>
+                    <option>Durazno</option>
+                    <option>Flores</option>
+                    <option>Florida</option>
+                    <option>Lavalleja</option>
+                    <option>Maldonado</option>
+                    <option>Montevideo</option>
+                    <option>Paysandú</option>
+                    <option>Río Negro</option>
+                    <option>Rivera</option>
+                    <option>Rocha</option>
+                    <option>Salto</option>
+                    <option>San José</option>
+                    <option>Soriano</option>
+                    <option>Tacuarembó</option>
+                    <option>Treinta y Tres</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputZip">Código postal</label>
+                    <input type="text" class="form-control" id="inputZip"  required>
+                </div>
+            </div>
+            <fieldset class="form-group">
+              <div class="row">
+                <legend class="col-form-label col-sm-3 pt-0">Tipo envío</legend>
+                <div class="col-sm-9">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(0)" name="tipoEnvio" id="tipoEnvio1" value="option1">
+                        <label class="form-check-label" for="tipoEnvio1">
+                            Premium (2 a 5 días) - 15% sobre el subtotal
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(1)" name="tipoEnvio" id="tipoEnvio2" value="option2">
+                        <label class="form-check-label" for="tipoEnvio2">
+                            Express (5 a 8 días) - 7% sobre el subtotal
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(2)" name="tipoEnvio" id="tipoEnvio3" value="option3">
+                        <label class="form-check-label" for="tipoEnvio3">
+                            Standard (12 a 15 días) - 5% sobre el subtotal
+                        </label>
+                    </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" onclick="confirmarDireccion()">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="index-main.html">Inicio</a>
@@ -88,9 +179,9 @@
         <div class="col-6">
           <form>
             <h5><strong>Elegir tipo envío:</strong></h5>
-            <input type="radio" id="retiro" name="envio" onclick="mostrarDireccionCampo(0)" value="retiro" autofocus>
+            <input type="radio" id="retiro" name="envio" value="retiro" onclick="noEnvio()" autofocus>
             <label for="retiro">Retiro en sucursal</label>
-            <input type="radio" id="envioO" name="envio" onclick="mostrarDireccionCampo(1)" value="envioO">
+            <input type="radio" id="envioO" name="envio" data-toggle="modal" data-target="#modalDireccion" value="envioO">
             <label for="envioO">Envío a dirección</label>
             <span id="direccion"></span>
             <br>
@@ -102,7 +193,7 @@
             <input type="radio" id="paypal" name="pago" value="paypal">
             <label for="paypal">PayPal</label>
             <br>
-            <input type="submit" value="Realizar compra">
+            <button type="button" class="btn btn-primary">Realizar compra</button>
           </form>
         </div>
     </div>

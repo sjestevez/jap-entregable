@@ -43,6 +43,12 @@ function mostrarItems(){
                 </div>
                 <div class="col-2">
                     <input class="cantidad" type="number" size="3" onchange="calcularTotales()" min="0" value="` + itemActual.count + `">
+                    <button class="btn btn-outline-secondary" onclick="borrarArticulo(` + i + `)" type="button">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </button>
                 </div>
                 <div class="col-2">
                     <h4><strong>` + itemActual.currency + ` <span class="total"></span></strong></h4>
@@ -53,6 +59,11 @@ function mostrarItems(){
     }
     document.getElementById("carritoItems").innerHTML = htmlContentToAppend;
     calcularTotales();
+}
+
+function borrarArticulo(num){
+    itemsCarrito.articles.splice(num, 1);
+    mostrarItems();
 }
 
 function calcularTotalFinal(num){
@@ -70,86 +81,27 @@ function calcularTotalFinal(num){
 
     }
 }
-function mostrarDireccionCampo(mostrar){
-    if (mostrar){
-        document.getElementById("direccion").innerHTML=`
-        <form>
-            <div class="form-group">
-                <label for="inputAddress">Dirección</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Dirección..." required>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress2">Info adicional dirección</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartmento, piso..." required>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputCity">Ciudad</label>
-                    <input type="text" class="form-control" id="inputCity" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputState">Departamento</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Elegir...</option>
-                        <option>Artigas</option>
-                        <option>Canelones</option>
-                        <option>Cerro Largo</option>
-                        <option>Colonia</option>
-                        <option>Durazno</option>
-                        <option>Flores</option>
-                        <option>Florida</option>
-                        <option>Lavalleja</option>
-                        <option>Maldonado</option>
-                        <option>Montevideo</option>
-                        <option>Paysandú</option>
-                        <option>Río Negro</option>
-                        <option>Rivera</option>
-                        <option>Rocha</option>
-                        <option>Salto</option>
-                        <option>San José</option>
-                        <option>Soriano</option>
-                        <option>Tacuarembó</option>
-                        <option>Treinta y Tres</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="inputZip">Código postal</label>
-                    <input type="text" class="form-control" id="inputZip"  required>
-                </div>
-            </div>
-            <fieldset class="form-group">
-                <div class="row">
-                <legend class="col-form-label col-sm-3 pt-0">Tipo envío</legend>
-                <div class="col-sm-9">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(0)" name="tipoEnvio" id="tipoEnvio1" value="option1">
-                        <label class="form-check-label" for="tipoEnvio1">
-                            Premium (2 a 5 días) - 15% sobre el subtotal
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(1)" name="tipoEnvio" id="tipoEnvio2" value="option2">
-                        <label class="form-check-label" for="tipoEnvio2">
-                            Express (5 a 8 días) - 7% sobre el subtotal
-                        </label>
-                    </div>
-                    <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(2)" name="tipoEnvio" id="tipoEnvio3" value="option3">
-                        <label class="form-check-label" for="tipoEnvio3">
-                            Standard (12 a 15 días) - 5% sobre el subtotal
-                        </label>
-                    </div>
-                </div>
-                </div>
-            </fieldset>
-        </div>
-    </form>`;
-    } else {
-        document.getElementById("direccion").innerHTML="";
-        document.getElementById("totalCompra").innerHTML = Math.ceil(subtotalFinal);
-    }
+
+function noEnvio(){
+    document.getElementById("totalCompra").innerHTML = Math.ceil(subtotalFinal);
+}
+
+function confirmarDireccion(){
+    var direccion = document.getElementById("inputAddress").value;
+    var direccion2 = document.getElementById("inputAddress2").value;
+    var ciudad = document.getElementById("inputCity").value;
+    var departamento = document.getElementById("inputState").value;
+    var codigo_zip = document.getElementById("inputZip").value;
+
+    if ((direccion === "") ||
+        (direccion2 === "") ||
+        (ciudad === "") ||
+        (departamento === "Elegir...") ||
+        (codigo_zip === "")){
+            alert("Debe llenar todos los campos.");
+        } else {
+            $('#modalDireccion').modal('hide');
+        }
 }
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CART_INFO_URL).then(function(resultObj){
