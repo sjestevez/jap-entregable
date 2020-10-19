@@ -87,6 +87,33 @@ function noEnvio(){
 }
 
 function confirmarDireccion(){
+    var elementos_direccion = document.getElementsByClassName("direccionForm");
+    let invalidos = 0;
+
+    for (let i = 0; i < elementos_direccion.length; i++){
+        if (elementos_direccion[i].value === "" || elementos_direccion[i].value === "Elegir..."){
+            elementos_direccion[i].classList.add("is-invalid");
+            elementos_direccion[i].classList.remove("is-valid");
+        } else {
+            elementos_direccion[i].classList.add("is-valid");
+            elementos_direccion[i].classList.remove("is-invalid");
+        }
+    }
+
+    for (let i = 0; i < elementos_direccion.length; i++){
+        if (elementos_direccion[i].classList.contains("is-invalid")){
+            invalidos = invalidos + 1;
+        }
+    }
+
+    if (invalidos){
+        alert("Debe llenar todos los campos.");
+    } else {
+        $('#modalDireccion').modal('hide');
+    }
+
+
+    /*
     var direccion = document.getElementById("inputAddress").value;
     var direccion2 = document.getElementById("inputAddress2").value;
     var ciudad = document.getElementById("inputCity").value;
@@ -99,10 +126,12 @@ function confirmarDireccion(){
         (departamento === "Elegir...") ||
         (codigo_zip === "")){
             alert("Debe llenar todos los campos.");
-        } else {
+    } else {
             $('#modalDireccion').modal('hide');
-        }
+    }
+    */
 }
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CART_INFO_URL).then(function(resultObj){
         itemsCarrito = resultObj.data;
