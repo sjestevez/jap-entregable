@@ -5,7 +5,8 @@ var itemsCarrito = {};
 var itemActual;
 var subtotalFinal;
 var total;
-var opcionEnvio;
+var opcionEnvio = 0;
+var invalidos;
 
 function calcularTotales(){
     let camposPrecio = document.getElementsByClassName("total");
@@ -89,7 +90,7 @@ function noEnvio(){
 
 function confirmarDireccion(){
     var elementos_direccion = document.getElementsByClassName("direccionForm");
-    let invalidos = 0;
+    invalidos = 0;
 
     for (let i = 0; i < elementos_direccion.length; i++){
         if (elementos_direccion[i].value === "" || elementos_direccion[i].value === "Elegir..."){
@@ -133,13 +134,73 @@ function confirmarDireccion(){
     */
 }
 
-function activoEnvio(num){
+function envioActivo(num){
     opcionEnvio = num;
+    switch(opcionEnvio){
+        case 0:
+            var elemento_transferencia = document.getElementsByClassName("transferenciaForm");
+            elemento_transferencia[0].classList.remove("is-valid");
+            elemento_transferencia[0].classList.remove("is-invalid");
+        break;
+        case 1:
+            var elementos_pago = document.getElementsByClassName("tarjetaForm");
+            for (let i = 0; i < elementos_pago.length; i++){
+                elementos_pago[i].classList.remove("is-valid");
+                elementos_pago[i].classList.remove("is-invalid");
+            }
+        break;
+    }
 }
 
-confirmarEnvio(){
-    
+function confirmarEnvio(){
+    switch(opcionEnvio){
+        case 0:
+            var elementos_pago = document.getElementsByClassName("tarjetaForm");
+            invalidos = 0;
+        
+            for (let i = 0; i < elementos_pago.length; i++){
+                if (elementos_pago[i].value === ""){
+                    elementos_pago[i].classList.add("is-invalid");
+                    elementos_pago[i].classList.remove("is-valid");
+                } else {
+                    elementos_pago[i].classList.add("is-valid");
+                    elementos_pago[i].classList.remove("is-invalid");
+                }
+            }
+        
+            for (let i = 0; i < elementos_pago.length; i++){
+                if (elementos_pago[i].classList.contains("is-invalid")){
+                    invalidos = invalidos + 1;
+                }
+            }
+        
+            if (invalidos){
+                alert("Debe llenar todos los campos.");
+            } else {
+                $('#modalEnvio').modal('hide');
+            } 
+        break;
+        case 1:
+            var elemento_transferencia = document.getElementsByClassName("transferenciaForm");
+            var j = 0;
+            if (elemento_transferencia[j].value === ""){
+                elemento_transferencia[j].classList.add("is-invalid");
+                elemento_transferencia[j].classList.remove("is-valid");
+            } else {
+                elemento_transferencia[j].classList.add("is-valid");
+                elemento_transferencia[j].classList.remove("is-invalid");
+            }
+
+            if (elemento_transferencia[j].classList.contains("is-invalid")){
+                alert("Debe llenar todos los campos.");
+            } else {
+                $('#modalEnvio').modal('hide');
+            }
+        break;
+    }
 }
+    
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CART_INFO_URL).then(function(resultObj){
         itemsCarrito = resultObj.data;

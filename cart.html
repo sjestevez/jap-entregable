@@ -47,16 +47,16 @@
           <form>
             <div class="form-group">
               <label for="inputAddress">Dirección</label>
-              <input type="text" class="form-control direccionForm" id="inputAddress" placeholder="Dirección..." required>
+              <input type="text" class="form-control direccionForm" id="inputAddress" placeholder="Dirección..." >
             </div>
             <div class="form-group">
               <label for="inputAddress2">Info adicional dirección</label>
-              <input type="text" class="form-control direccionForm" id="inputAddress2" placeholder="Apartmento, piso..." required>
+              <input type="text" class="form-control direccionForm" id="inputAddress2" placeholder="Apartmento, piso..." >
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputCity">Ciudad</label>
-                <input type="text" class="form-control direccionForm" id="inputCity" required>
+                <input type="text" class="form-control direccionForm" id="inputCity" >
               </div>
               <div class="form-group col-md-6">
                 <label for="inputState">Departamento</label>
@@ -87,7 +87,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputZip">Código postal</label>
-                    <input type="text" class="form-control direccionForm" id="inputZip"  required>
+                    <input type="text" class="form-control direccionForm" id="inputZip"  >
                 </div>
             </div>
             <fieldset class="form-group">
@@ -138,18 +138,41 @@
           <div class="container">
             <div class="row">
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="pago_tarjeta" name="pago">
+                <input type="radio" class="custom-control-input" id="pago_tarjeta" onclick="envioActivo(0)" name="pago">
                 <label for="pago_tarjeta" class="custom-control-label">Tarjeta de crédito</label>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <label for="tarjetaNombre">Nombre completo</label>
+              <input type="text" class="form-control tarjetaForm" id="tarjetaNombre" placeholder="Nombre y apellido..." >
+            </div>
+            <div class="form-group">
+              <label for="tarjetaNumero">Número</label>
+              <input type="number" class="form-control tarjetaForm" id="tarjetaNumero" placeholder="Número tarjeta..." >
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="tarjetaCVV">CVV</label>
+                <input type="number" size="3" class="form-control tarjetaForm" id="tarjetaCVV" >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="tarjetaVenc">Vencimiento</label>
+                <input type="text" size="5" class="form-control tarjetaForm" id="tarjetaVenc" >
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="pago_bancario" name="pago">
+                <input type="radio" class="custom-control-input" id="pago_bancario" onclick="envioActivo(1)" name="pago">
                 <label for="pago_bancario" class="custom-control-label">Transferencia bancaria</label>
               </div>
             </div>   
-            <hr>       
+            <hr>
+            <div class="form-group">
+              <label for="transferenciaNumero">Número cuenta</label>
+              <input type="number" class="form-control transferenciaForm" id="transferenciaNumero" >
+            </div>       
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
