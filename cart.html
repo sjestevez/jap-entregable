@@ -125,33 +125,36 @@
     </div>
   </div>
 
-  <div class="modal fade" id="modalEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalEnvio" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tipo pago</h5>
+          <h5 class="modal-title" id="exampleModalLabel2">Tipo pago</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="redpagos" name="pago" value="redpagos">
-            <label for="redpagos" class="custom-control-label" onclick="mostrar()">Redpagos</label>
+          <div class="container">
+            <div class="row">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="pago_tarjeta" name="pago">
+                <label for="pago_tarjeta" class="custom-control-label">Tarjeta de crédito</label>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="pago_bancario" name="pago">
+                <label for="pago_bancario" class="custom-control-label">Transferencia bancaria</label>
+              </div>
+            </div>   
+            <hr>       
           </div>
-          <span id="lala"></span>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="mercadopago" name="pago" value="mercadopago">
-            <label for="mercadopago" class="custom-control-label">MercadoPago</label>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" onclick="confirmarEnvio()">Confirmar</button>
           </div>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="paypal" name="pago" value="paypal">
-            <label for="paypal" class="custom-control-label">PayPal</label>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" onclick="confirmarEnvio()">Confirmar</button>
         </div>
       </div>
     </div>

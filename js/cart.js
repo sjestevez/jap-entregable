@@ -5,6 +5,7 @@ var itemsCarrito = {};
 var itemActual;
 var subtotalFinal;
 var total;
+var opcionEnvio;
 
 function calcularTotales(){
     let camposPrecio = document.getElementsByClassName("total");
@@ -132,6 +133,13 @@ function confirmarDireccion(){
     */
 }
 
+function activoEnvio(num){
+    opcionEnvio = num;
+}
+
+confirmarEnvio(){
+    
+}
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CART_INFO_URL).then(function(resultObj){
         itemsCarrito = resultObj.data;
