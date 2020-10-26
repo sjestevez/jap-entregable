@@ -157,3 +157,7 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#prod-list-container a {
+  color: black;
+}
