@@ -47,20 +47,20 @@
           <form>
             <div class="form-group">
               <label for="inputAddress">Dirección</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="Dirección..." required>
+              <input type="text" class="form-control direccionForm" id="inputAddress" placeholder="Dirección..." >
             </div>
             <div class="form-group">
               <label for="inputAddress2">Info adicional dirección</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartmento, piso..." required>
+              <input type="text" class="form-control direccionForm" id="inputAddress2" placeholder="Apartmento, piso..." >
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputCity">Ciudad</label>
-                <input type="text" class="form-control" id="inputCity" required>
+                <input type="text" class="form-control direccionForm" id="inputCity" >
               </div>
               <div class="form-group col-md-6">
                 <label for="inputState">Departamento</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" class="form-control direccionForm">
                     <option selected>Elegir...</option>
                     <option>Artigas</option>
                     <option>Canelones</option>
@@ -87,28 +87,28 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputZip">Código postal</label>
-                    <input type="text" class="form-control" id="inputZip"  required>
+                    <input type="text" class="form-control direccionForm" id="inputZip"  >
                 </div>
             </div>
             <fieldset class="form-group">
               <div class="row">
                 <legend class="col-form-label col-sm-3 pt-0">Tipo envío</legend>
                 <div class="col-sm-9">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(0)" name="tipoEnvio" id="tipoEnvio1" value="option1">
-                        <label class="form-check-label" for="tipoEnvio1">
+                    <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" onclick="calcularTotalFinal(0)" name="tipoEnvio" id="tipoEnvio1" value="option1">
+                        <label class="custom-control-label" for="tipoEnvio1">
                             Premium (2 a 5 días) - 15% sobre el subtotal
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(1)" name="tipoEnvio" id="tipoEnvio2" value="option2">
-                        <label class="form-check-label" for="tipoEnvio2">
+                    <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" onclick="calcularTotalFinal(1)" name="tipoEnvio" id="tipoEnvio2" value="option2">
+                        <label class="custom-control-label" for="tipoEnvio2">
                             Express (5 a 8 días) - 7% sobre el subtotal
                         </label>
                     </div>
-                    <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" onclick="calcularTotalFinal(2)" name="tipoEnvio" id="tipoEnvio3" value="option3">
-                        <label class="form-check-label" for="tipoEnvio3">
+                    <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" onclick="calcularTotalFinal(2)" name="tipoEnvio" id="tipoEnvio3" value="option3">
+                        <label class="custom-control-label" for="tipoEnvio3">
                             Standard (12 a 15 días) - 5% sobre el subtotal
                         </label>
                     </div>
@@ -124,6 +124,65 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="modalEnvio" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Tipo pago</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="pago_tarjeta" onclick="envioActivo(0)" name="pago">
+                <label for="pago_tarjeta" class="custom-control-label">Tarjeta de crédito</label>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <label for="tarjetaNombre">Nombre completo</label>
+              <input type="text" class="form-control tarjetaForm" id="tarjetaNombre" placeholder="Nombre y apellido..." >
+            </div>
+            <div class="form-group">
+              <label for="tarjetaNumero">Número</label>
+              <input type="number" class="form-control tarjetaForm" id="tarjetaNumero" placeholder="Número tarjeta..." >
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="tarjetaCVV">CVV</label>
+                <input type="number" size="3" class="form-control tarjetaForm" id="tarjetaCVV" >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="tarjetaVenc">Vencimiento</label>
+                <input type="text" size="5" class="form-control tarjetaForm" id="tarjetaVenc" >
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="pago_bancario" onclick="envioActivo(1)" name="pago">
+                <label for="pago_bancario" class="custom-control-label">Transferencia bancaria</label>
+              </div>
+            </div>   
+            <hr>
+            <div class="form-group">
+              <label for="transferenciaNumero">Número cuenta</label>
+              <input type="number" class="form-control transferenciaForm" id="transferenciaNumero" >
+            </div>       
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" onclick="confirmarEnvio()">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
@@ -179,19 +238,17 @@
         <div class="col-6">
           <form>
             <h5><strong>Elegir tipo envío:</strong></h5>
-            <input type="radio" id="retiro" name="envio" value="retiro" onclick="noEnvio()" autofocus>
-            <label for="retiro">Retiro en sucursal</label>
-            <input type="radio" id="envioO" name="envio" data-toggle="modal" data-target="#modalDireccion" value="envioO">
-            <label for="envioO">Envío a dirección</label>
-            <span id="direccion"></span>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="retiro" name="envio" value="retiro" onclick="noEnvio()" autofocus checked>
+              <label for="retiro" class="custom-control-label">Retiro en sucursal</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="envioDireccion" name="envio" data-toggle="modal" data-target="#modalDireccion" value="envioDireccion">
+              <label for="envioDireccion" class="custom-control-label">Envío a dirección</label>
+              <span id="direccion"></span>
+            </div>
             <br>
-            <h5><strong>Elegir tipo pago:</strong></h5>
-            <input type="radio" id="redpagos" name="pago" value="redpagos">
-            <label for="redpagos">Redpagos</label>
-            <input type="radio" id="mercadopago" name="pago" value="mercadopago">
-            <label for="mercadopago">MercadoPago</label>
-            <input type="radio" id="paypal" name="pago" value="paypal">
-            <label for="paypal">PayPal</label>
+            <button class="btn btn-link" type="button" data-toggle="modal" data-target="#modalEnvio">Seleccionar forma de pago</button>         
             <br>
             <button type="button" class="btn btn-primary">Realizar compra</button>
           </form>
