@@ -45,19 +45,114 @@
         </button>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="cart.html">Mi carrito</a>
-          <a class="dropdown-item" href="#">Mi perfil</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
         </div>
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container">
+    <div class="text-center p-4">
+      <h2>Perfil</h2>
+      <p class="lead">Datos de  usuario.</p>
+    </div>
+    <hr>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 order-md-1">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputName">Nombre</label>
+              <input type="text" class="form-control" id="inputName" placeholder="Diego">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputLastName">Apellido</label>
+              <input type="text" class="form-control" id="inputLastName" placeholder="Forlán">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-10">
+              <label for="inlineFormInputGroup">Email</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">@</div>
+                </div>
+                <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputAge">Edad</label>
+              <input type="number" class="form-control" id="inputAge" placeholder="41">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputTelephone">Teléfono</label>
+              <input type="text" class="form-control" id="inputTelephone" placeholder="21234567">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputCellphone">Celular</label>
+              <input type="text" class="form-control" id="inputCellphone" placeholder="099999999">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Dirección</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="18 de Julio...">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Info adicional</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, piso...">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">Ciudad</label>
+              <input type="text" class="form-control" id="inputCity" placeholder="Montevideo">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">Departamento</label>
+              <select id="inputState" class="form-control">
+                <option selected>Elegir...</option>
+                <option>Artigas</option>
+                <option>Canelones</option>
+                <option>Cerro Largo</option>
+                <option>Colonia</option>
+                <option>Durazno</option>
+                <option>Flores</option>
+                <option>Florida</option>
+                <option>Lavalleja</option>
+                <option>Maldonado</option>
+                <option>Montevideo</option>
+                <option>Paysandú</option>
+                <option>Río Negro</option>
+                <option>Rivera</option>
+                <option>Rocha</option>
+                <option>Salto</option>
+                <option>San José</option>
+                <option>Soriano</option>
+                <option>Tacuarembó</option>
+                <option>Treinta y Tres</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Código postal</label>
+              <input type="text" class="form-control" id="inputZip" placeholder="11100">
+            </div>
+          </div>
+          <hr>
+          <h5>Mis últimas compras <small class="text-muted">Aquí podra ver sus últimas compras</small></h5>          
+          <ul class="list-group">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <hr>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-danger">Limpiar</button>
+        </form>
+      </div>
     </div>
   </div>
   <footer class="text-muted bg-light">

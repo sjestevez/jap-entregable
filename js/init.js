@@ -41,15 +41,18 @@ var getJSONData = function(url){
 }
 
 function cerrarSesion(){
-  localStorage.removeItem("nombre_usuario");
+  sessionStorage.removeItem("nombre_usuario");
   window.location.href = "index.html";
-
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-  var usuario_actual = localStorage.getItem("nombre_usuario");
+  var usuario_actual = sessionStorage.getItem("nombre_usuario");
+  if (usuario_actual == undefined){
+    window.location.href = "index.html";
+  } else {
   document.getElementById("usuario").innerText = usuario_actual;
+  }
 });

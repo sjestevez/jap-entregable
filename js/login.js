@@ -12,7 +12,7 @@ function logeo(){
     if ((usuario === "") || (contra === "")){
         alert("Debe ingresar usuario y contraseña");
     } else {
-        localStorage.setItem("nombre_usuario", usuario);
+        sessionStorage.setItem("nombre_usuario", usuario);
         window.location.href = "index-main.html";
     }
 }
