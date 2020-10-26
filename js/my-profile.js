@@ -86,8 +86,19 @@ function borrarCampos(){
         localStorage.removeItem("datos_usuario");
     }
 }
+
+function cambiarFoto(){
+    var imagen = prompt("Por favor ingresa una URL para usar como nueva foto. Ejemplo: https://i.ibb.co/QrfGCJ9/tree1.jpg");
+    localStorage.setItem("imagen_usuario", imagen);
+    document.getElementById("fotoUsuario").src=imagen;
+}
+
 document.addEventListener("DOMContentLoaded", function (e) {
     if (localStorage.getItem("datos_usuario") != undefined){
         cargarDatos();
+    }
+
+    if (localStorage.getItem("imagen_usuario") != undefined){
+        document.getElementById("fotoUsuario").src=localStorage.getItem("imagen_usuario");
     }
 });

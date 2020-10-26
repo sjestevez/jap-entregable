@@ -41,7 +41,7 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="btn-group">
-        <button id="usuario" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button id="usuario" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </button>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="cart.html">Mi carrito</a>
@@ -141,24 +141,32 @@
               </div>
             </div>
             <hr>
-            <h5>Mis últimas compras <small class="text-muted">Aquí podra ver sus últimas compras</small></h5>          
-            <ul class="list-group">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <hr>
             <button type="button" class="btn btn-primary" onclick="guardarDatos()">Guardar</button>
             <button type="button" class="btn btn-danger" onclick="borrarCampos()">Borrar</button>
           </form>
+          <hr>
+          <h5>Foto del usuario: </h5>
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-5">
+                  <img id="fotoUsuario" src="https://i.ibb.co/WypK5q4/THANY.jpg" alt="THANY" class="img-fluid img-thumbnail rounded mx-auto d-block">
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-3">
+                  <button type="button" class="btn btn-dark"onclick="cambiarFoto()">Cambiar foto usuario</button>
+                </div>
+              </div>
+            </div>          
         </div>
       </div>
     </div>
   </main>
   <footer class="text-muted bg-light">
     <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>

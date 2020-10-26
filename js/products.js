@@ -51,11 +51,10 @@ function showProductsList(){
                         <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail card-img-top" width="100%" height="225"">
                             <div class="card-body">
                                 <h2 class="card-text">`+ product.name +`</h2>
-                                <div class="d-flex w-100 justify-content-between">
-                                    <p>Precio: ` + product.currency + ` ` + product.cost + ` 
-                                    <small class="text-muted">` + product.soldCount + ` vendidos</small>
-                                </div>
+                                <hr>
+                                <h5>Precio: ` + product.currency + ` ` + product.cost + ` <small class="text-muted"> ` + product.soldCount + ` vendidos</small></h5>                                
                                 <p class="mb-1">` + product.description + `</p>
+                                <hr>                                                               
                             </div>
                         </div>
                     </a>
