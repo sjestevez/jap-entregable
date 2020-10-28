@@ -50,12 +50,12 @@ function guardarDatos(){
         Datos.departamento = document.getElementById("inputState").value;
         Datos.zip = document.getElementById("inputZip").value;
         
-        localStorage.setItem("datos_usuario", JSON.stringify(Datos));
+        sessionStorage.setItem("datos_usuario", JSON.stringify(Datos));
     }
 }
 
 function cargarDatos(){
-    let datos_aux = localStorage.getItem("datos_usuario");
+    let datos_aux = sessionStorage.getItem("datos_usuario");
     Datos = JSON.parse(datos_aux);
 
     document.getElementById("inputName").value = Datos.nombre;
@@ -71,34 +71,18 @@ function cargarDatos(){
     document.getElementById("inputZip").value = Datos.zip;
 }
 
-function borrarCampos(){
-    var confirmacion = confirm("¿Borrar todos los campos (borrara también lo guardado)?");
-    if (confirmacion){
-        var datos_formulario = document.getElementsByClassName("form-control");
-        for (let i = 0; i < datos_formulario.length; i++){
-            let datos_formulario_actual = datos_formulario[i];
-            if (datos_formulario_actual.id !== "idState"){
-                datos_formulario_actual.value = "";
-            } else {
-                datos_formulario_actual.value = "Elegir...";
-            }
-        }
-        localStorage.removeItem("datos_usuario");
-    }
-}
-
 function cambiarFoto(){
     var imagen = prompt("Por favor ingresa una URL para usar como nueva foto. Ejemplo: https://i.ibb.co/QrfGCJ9/tree1.jpg");
-    localStorage.setItem("imagen_usuario", imagen);
+    sessionStorage.setItem("imagen_usuario", imagen);
     document.getElementById("fotoUsuario").src=imagen;
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
-    if (localStorage.getItem("datos_usuario") != undefined){
+    if (sessionStorage.getItem("datos_usuario") != undefined){
         cargarDatos();
     }
 
-    if (localStorage.getItem("imagen_usuario") != undefined){
-        document.getElementById("fotoUsuario").src=localStorage.getItem("imagen_usuario");
+    if (sessionStorage.getItem("imagen_usuario") != undefined){
+        document.getElementById("fotoUsuario").src=sessionStorage.getItem("imagen_usuario");
     }
 });
